@@ -311,5 +311,10 @@ class Darknet(nn.Module):
 
 
 # Test whether the configuration has been parsed successfully or not
-model = Darknet("cfg/yolov3.cfg")
-model.load_weights("yolov3.weights")
+if __name__ == '__main__':
+    model = Darknet("cfg/yolov3.cfg")
+    model.load_weights("yolov3.weights")
+    print(model)
+    inp = get_test_input()
+    pred = model(inp, torch.cuda.is_available())
+    print (pred)
