@@ -52,7 +52,7 @@ class Detector:
         # The first is ignored. The last is the index in the classes list.
         if prediction == 0:
             return img
-            
+
         prediction = prediction.detach().cpu().numpy()
 
         # Go over all the predictions and draw on the image
@@ -76,9 +76,6 @@ class Detector:
             text_size = cv2.getTextSize(class_label, cv2.FONT_HERSHEY_PLAIN, 1, 1)[0]
             cv2.putText(img, class_label, (c1[0], c1[1] + text_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 1, [255, 0, 0], 1)
         return img
-
-print('__file__={0:<35} | __name__={1:<20} | __package__={2:<20}'.format(__file__,__name__,str(__package__)))
-count = 5
 
 if __name__ == '__main__':
     detector = Detector()
