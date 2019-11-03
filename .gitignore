@@ -4,3 +4,4 @@ __pycache__/
 flask_app/__pycache__/
 *.pyc
 pytorch_implementation/*
+flutter_app/*
