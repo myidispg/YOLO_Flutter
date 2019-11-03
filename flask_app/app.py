@@ -38,7 +38,6 @@ class ObjectDetect(Resource):
         if type(img) == int:
             return 'No objects detected.'
 
-
         # Encode the image back to jpeg
         _, jpg = cv2.imencode('.jpg', img)
         response = make_response(jpg.tobytes())
