@@ -50,8 +50,10 @@ class Detector:
         prediction = write_results(prediction, self.confidence, self.num_classes, nms_conf = self.nms_thresh)
         # The output is of the shape No_detected_objects x 8.
         # The first is ignored. The last is the index in the classes list.
-        if prediction == 0:
-            return img
+        
+        # If no object detected
+        if type(prediction) == int:
+            return 0
 
         prediction = prediction.detach().cpu().numpy()
 

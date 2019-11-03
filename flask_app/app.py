@@ -32,7 +32,12 @@ class ObjectDetect(Resource):
         
         # Perform detection.
         detector = Detector()
+
         img = detector.detect_and_draw(img)
+        # print(type(img))
+        if type(img) == int:
+            return 'No objects detected.'
+
 
         # Encode the image back to jpeg
         _, jpg = cv2.imencode('.jpg', img)
