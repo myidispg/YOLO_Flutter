@@ -1,2 +1,5 @@
 YOLOv3/*
 *.weights
+__pycache__/
+flask_app/__pycache__/
+*.pyc
