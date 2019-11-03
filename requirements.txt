@@ -1,9 +1,9 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: win-64
-aniso8601=8.0.0=py_0
-astroid=2.3.2=py37_0
-blas=1.0=mkl
+# aniso8601=8.0.0=py_0
+# astroid=2.3.2=py37_0
+# blas=1.0=mkl
 ca-certificates=2019.10.16=0
 certifi=2019.9.11=py37_0
 cffi=1.13.1=py37h7a1dbc1_0
@@ -26,10 +26,10 @@ libpng=1.6.37=h2a8f88b_0
 libtiff=4.0.10=hb898794_2
 markupsafe=1.1.1=py37he774522_0
 mccabe=0.6.1=py37_1
-mkl=2019.4=245
-mkl-service=2.3.0=py37hb782905_0
-mkl_fft=1.0.14=py37h14836fe_0
-mkl_random=1.1.0=py37h675688f_0
+# mkl=2019.4=245
+# mkl-service=2.3.0=py37hb782905_0
+# mkl_fft=1.0.14=py37h14836fe_0
+# mkl_random=1.1.0=py37h675688f_0
 ninja=1.9.0=py37h74a9793_0
 numpy=1.17.2=py37hc73f44b_0
 numpy-base=1.17.2=py37hc3f5095_0
