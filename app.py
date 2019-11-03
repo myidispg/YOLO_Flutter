@@ -28,7 +28,7 @@ class ObjectDetect(Resource):
     def post(self):
 
         img = cv2.imdecode(np.fromstring(request.files['image'].read(), np.uint8), cv2.IMREAD_UNCHANGED)
-        print(img.shape)
+        print(f'Image shape: {img.shape}')
         
         # Perform detection.
         detector = Detector()
