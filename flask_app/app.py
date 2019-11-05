@@ -1,4 +1,4 @@
-from flask import Flask, request, make_response, Response
+from flask import Flask, request, make_response, Response, send_file
 from flask_restful import Resource, Api, reqparse
 from werkzeug.datastructures import FileStorage
 
@@ -28,24 +28,26 @@ class ObjectDetect(Resource):
     def post(self):
 
         img = cv2.imdecode(np.fromstring(request.files['image'].read(), np.uint8), cv2.IMREAD_UNCHANGED)
-        print(f'Image shape: {img.shape}')
+        print(img.shape)
         
         # Perform detection.
         detector = Detector()
 
-        img = detector.detect_and_draw(img)
+        img_detect = detector.detect_and_draw(img)
         # print(type(img))
-        if type(img) == int:
-            return 'No objects detected.'
+        if type(img_detect) == int:
+            cv2.imwrite('image.jpg', img)
+        else:
+            cv2.imwrite('image.jpg', img_detect)
+            # return 'No objects detected.'
 
-        # Encode the image back to jpeg
-        _, jpg = cv2.imencode('.jpg', img)
-        response = make_response(jpg.tobytes())
-        print(type(response))
-        return response
+        return 'Successful', 200
         # return Response(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + jpg.tobytes() + b'\r\n\r\n', mimetype='multipart/x-mixed-replace; boundary=frame')
+
+    def get(self):
+        return send_file('image.jpg', mimetype='image/get')
 
 api.add_resource(ObjectDetect, '/detect')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=33, debug=True)
