@@ -4,9 +4,9 @@ import torch.nn as nn
 from torch.autograd import Variable
 import numpy as np
 import cv2 
-from util import *
+from .util import *
 import os 
-from darknet import Darknet
+from .darknet import Darknet
 import pandas as pd
 import random
 
@@ -72,11 +72,11 @@ class Detector:
             # Draw the bounding boxes
             c1 = (int(single_prediction[1]), int(single_prediction[2]))
             c2 = (int(single_prediction[3]), int(single_prediction[4]))
-            cv2.rectangle(img, c1, c2, (255, 0, 0), 1)
+            cv2.rectangle(img, c1, c2, (255, 0, 0), 5)
 
             # Write the class label
             text_size = cv2.getTextSize(class_label, cv2.FONT_HERSHEY_PLAIN, 1, 1)[0]
-            cv2.putText(img, class_label, (c1[0], c1[1] + text_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 1, [255, 0, 0], 1)
+            cv2.putText(img, class_label, (c1[0], c1[1] + text_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 8, [255, 0, 0], 5)
         return img
 
 if __name__ == '__main__':

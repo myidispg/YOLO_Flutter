@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import numpy as np
 
-from util import *
+from .util import *
 
 def get_test_input():
     img = cv2.imread("dog-cycle-car.png")

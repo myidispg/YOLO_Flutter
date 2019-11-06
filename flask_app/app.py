@@ -6,7 +6,8 @@ import numpy as np
 import cv2
 import os
 
-from detector import Detector
+from .detector import Detector
+# from detector import Detector
 
 app = Flask(__name__)
 api = Api(app)
@@ -30,14 +31,18 @@ class ObjectDetect(Resource):
         img = cv2.imdecode(np.fromstring(request.files['image'].read(), np.uint8), cv2.IMREAD_UNCHANGED)
         print(img.shape)
         
+        img = np.ascontiguousarray(img.transpose(1, 0, 2))
+        print(img.shape)
+        cv2.imwrite('image.jpg', img)
         # Perform detection.
         detector = Detector()
 
         img_detect = detector.detect_and_draw(img)
-        # print(type(img))
         if type(img_detect) == int:
+            print('Here')
             cv2.imwrite('image.jpg', img)
         else:
+            print(img_detect.shape)
             cv2.imwrite('image.jpg', img_detect)
             # return 'No objects detected.'
 
@@ -50,4 +55,4 @@ class ObjectDetect(Resource):
 api.add_resource(ObjectDetect, '/detect')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=33, debug=True)
+    app.run(host='0.0.0.0', port=8080, debug=True)
